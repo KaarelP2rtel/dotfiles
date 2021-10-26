@@ -1,0 +1,21 @@
+# /etc/systemd/system/sway.service
+[Unit]
+Description=Sway on tty1
+Documentation=man:sway(5)
+OnFailure=getty@tty1.service
+Conflicts=getty@tty1.service
+After=graphical.target
+
+[Service]
+User=kaarel
+ExecStart=/usr/bin/sway
+WorkingDirectory=~
+TTYPath=/dev/tty1
+PAMName=login
+#EnvironmentFile=/home/tb/.config/sway/env
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
+
+[Install]
+WantedBy=graphical.target
