@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+get(){
+    swaymsg -pt get_outputs | grep "$1" | awk '{print $2}'
+}
+left=""
+right=""
+
+left="${left}$(get J0XYN96OBRJS)"
+right="${right}$(get J0XYN96OBQ9S)"
+
+left="${left}$(get 33F2P83)"
+right="${right}$(get DDYHQ83)"
+
+swaymsg output "$left" pos 0 0
+swaymsg output "$right" pos 2560 0
+swaymsg output eDP-1 pos 5120 0
