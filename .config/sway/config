@@ -21,6 +21,45 @@ set $term x-terminal-emulator
 
 set $menu dmenu_path | dmenu -m $(swaymsg -t get_outputs | jq '[.[].focused] | index(true)') | xargs swaymsg exec --
 
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * dpms off"' \
+#               resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
 ### Key bindings
 #
 # Basics:
@@ -73,6 +112,33 @@ set $menu dmenu_path | dmenu -m $(swaymsg -t get_outputs | jq '[.[].focused] | i
 #
 # Workspaces:
 #
+    exec_always ~/.bin/displays.sh
+
+    workspace 1 output "Dell Inc. DELL U2717D J0XYN952675S"
+    workspace 3 output "Dell Inc. DELL U2717D J0XYN952675S"
+    workspace 5 output "Dell Inc. DELL U2717D J0XYN952675S"
+    workspace 7 output "Dell Inc. DELL U2717D J0XYN952675S"
+
+    workspace 1 output "Dell Inc. DELL U2719D 33F2P83"
+    workspace 3 output "Dell Inc. DELL U2719D 33F2P83"
+    workspace 5 output "Dell Inc. DELL U2719D 33F2P83"
+    workspace 7 output "Dell Inc. DELL U2719D 33F2P83"
+
+
+    workspace 2 output "Dell Inc. DELL U2717D J0XYN8B5ADEL"
+    workspace 4 output "Dell Inc. DELL U2717D J0XYN8B5ADEL"
+    workspace 6 output "Dell Inc. DELL U2717D J0XYN8B5ADEL"
+    workspace 8 output "Dell Inc. DELL U2717D J0XYN8B5ADEL"
+
+    workspace 2 output "Dell Inc. DELL S2721DGF DDYHQ83"
+    workspace 4 output "Dell Inc. DELL S2721DGF DDYHQ83"
+    workspace 6 output "Dell Inc. DELL S2721DGF DDYHQ83"
+    workspace 8 output "Dell Inc. DELL S2721DGF DDYHQ83"
+
+
+    workspace 9 output "Unknown 0x0791 0x00000000"
+    workspace 10 output "Unknown 0x0791 0x00000000"
+    exec_always ~/.bin/displays.sh
 
     # Switch to workspace
     bindsym $mod+1 workspace 1
@@ -178,4 +244,81 @@ bar {
     }
 }
 
-include ~/.config/sway/config.d/*
+include /etc/sway/config.d/*
+
+set $lockcmd swaylock
+
+### Idle configuration
+#exec swayidle \
+#    timeout 30 '$lockcmd' \
+#    timeout 31 'swaymsg "output * dpms off"' \
+#       resume 'swaymsg "output * dpms on"' \
+#    before-sleep '$lockcmd' \
+#    lock '$lockcmd' \
+#    unlock 'pkill -9 swaylock'
+
+exec swayidle \
+    timeout 300 'swaymsg "output * dpms off"' \
+    timeout 305 "$lockcmd" \
+    timeout 5 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep "$lockcmd"
+
+
+exec mako --ignore-timeout 1 --default-timeout 5000
+exec lxpolkit
+bindsym Scroll_Lock exec $lockcmd
+
+input * {
+    xkb_layout ee,ee
+    xkb_variant us,
+#    xkb_options caps:escape,grp:win_space_toggle
+    xkb_options caps:escape
+    xkb_numlock enabled
+    tap enabled
+}
+
+# Work mouse
+input 1133:16493:Logitech_M705 {
+    pointer_accel -0.6
+    natural_scroll disabled
+    accel_profile adaptive
+}
+input 1133:49256:Logitech_G500 {
+    pointer_accel 0
+    accel_profile flat
+}
+# T480s laptop
+input 1267:32:Elan_Touchpad {
+    pointer_accel 0.1
+    natural_scroll enabled
+}
+
+input 1267:32:Elan_TrackPoint {
+    events disabled
+}
+
+for_window [class="Spotify"] move to workspace 10
+bindswitch lid:on exec swaymsg output eDP-1 disable
+bindswitch lid:off exec swaymsg output eDP-1 enable
+
+bindsym Print exec ~/.bin/wscreenshot.py
+bindsym Print+Shift exec ~/.bin/wscreenshot.py --region
+bindsym Print+Alt exec ~/.bin/wscreenshot.py --window
+#bindsym F8 exec amixer set Capture cap
+bindsym --release F8 exec amixer set Capture nocap
+for_window [title="Microsoft Teams Notification"] floating enable
+no_focus [title="Microsoft Teams Notification"]
+for_window [title="Picture-in-Picture"] floating enable 
+no_focus [title="Picture-in-Picture"]
+for_window [title="Microsoft Teams Notification"] move absolute position 2100 px 1200 px
+bindsym Pause exec swaymsg "output * dpms on"
+
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+
