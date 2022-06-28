@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 get(){
-    swaymsg -pt get_outputs | grep "$1" | awk '{print $2}'
+    swaymsg -pt get_outputs | grep "$1" | awk '{print $2}' || true
 }
 left=""
 right=""
