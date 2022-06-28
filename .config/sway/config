@@ -112,7 +112,6 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Workspaces:
 #
-    exec_always ~/.bin/displays
 
     workspace 1 output "Dell Inc. DELL U2717D J0XYN952675S"
     workspace 3 output "Dell Inc. DELL U2717D J0XYN952675S"

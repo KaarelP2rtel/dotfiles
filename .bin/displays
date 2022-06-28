@@ -6,9 +6,11 @@ get(){
 left=""
 right=""
 
-left="${left}$(get J0XYN96OBRJS)"
-right="${right}$(get J0XYN96OBQ9S)"
+# M
+left="${left}$(get J0XYN96OBQ9S)"
+right="${right}$(get J0XYN96OBRJS)"
 
+# H
 left="${left}$(get 33F2P83)"
 right="${right}$(get DDYHQ83)"
 
