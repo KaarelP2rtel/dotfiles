@@ -112,7 +112,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Workspaces:
 #
-    exec_always ~/.bin/displays.sh
+    exec_always ~/.bin/displays
 
     workspace 1 output "Dell Inc. DELL U2717D J0XYN952675S"
     workspace 3 output "Dell Inc. DELL U2717D J0XYN952675S"
@@ -138,7 +138,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     workspace 9 output "Unknown 0x0791 0x00000000"
     workspace 10 output "Unknown 0x0791 0x00000000"
-    exec_always ~/.bin/displays.sh
+    exec_always ~/.bin/displays
 
     # Switch to workspace
     bindsym $mod+1 workspace 1
@@ -302,14 +302,14 @@ for_window [class="Spotify"] move to workspace 10
 bindswitch lid:on exec swaymsg output eDP-1 disable
 bindswitch lid:off exec swaymsg output eDP-1 enable
 
-bindsym Print exec ~/.bin/wscreenshot.py
-bindsym Print+Shift exec ~/.bin/wscreenshot.py --region
-bindsym Print+Alt exec ~/.bin/wscreenshot.py --window
+bindsym Print exec ~/.bin/wscreenshot
+bindsym Print+Shift exec ~/.bin/wscreenshot --region
+bindsym Print+Alt exec ~/.bin/wscreenshot --window
 #bindsym F8 exec amixer set Capture cap
 bindsym --release F8 exec amixer set Capture nocap
 for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]
-for_window [title="Picture-in-Picture"] floating enable 
+for_window [title="Picture-in-Picture"] floating enable
 no_focus [title="Picture-in-Picture"]
 for_window [title="Microsoft Teams Notification"] move absolute position 2100 px 1200 px
 bindsym Pause exec swaymsg "output * dpms on"
@@ -321,4 +321,3 @@ bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-
