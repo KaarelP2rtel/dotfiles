@@ -2,7 +2,7 @@
 [Unit]
 Description=Sway on tty1
 Documentation=man:sway(5)
-OnFailure=getty@tty1.service
+#OnFailure=getty@tty1.service
 Conflicts=getty@tty1.service
 After=graphical.target
 
@@ -16,6 +16,6 @@ EnvironmentFile=-.config/sway/env
 TTYReset=yes
 TTYVHangup=yes
 TTYVTDisallocate=yes
-
+Restart=always
 [Install]
 WantedBy=graphical.target
