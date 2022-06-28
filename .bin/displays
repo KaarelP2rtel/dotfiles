@@ -7,8 +7,8 @@ left=""
 right=""
 
 # M
-left="${left}$(get J0XYN96OBQ9S)"
-right="${right}$(get J0XYN96OBRJS)"
+left="${left}$(get J0XYN96OBRJS)"
+right="${right}$(get J0XYN96OBQ9S)"
 
 # H
 left="${left}$(get 33F2P83)"
