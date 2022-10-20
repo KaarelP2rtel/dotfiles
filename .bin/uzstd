@@ -1,0 +1,9 @@
+#!/usr/bin/env xonsh
+from math import log2, ceil
+
+file=$ARG1
+
+filesize = $(stat -c%s @(file)).strip()
+level=min(31, ceil(log2(int(filesize))))
+print(f"Using level {level}")
+zstd --ultra -22 --long=@(level) @(file)
