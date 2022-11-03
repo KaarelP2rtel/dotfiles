@@ -299,7 +299,9 @@ input 1267:32:Elan_TrackPoint {
 
 for_window [class="Spotify"] move to workspace 10
 bindswitch lid:on exec swaymsg output eDP-1 disable
+
 bindswitch lid:off exec swaymsg output eDP-1 enable
+
 
 bindsym Print exec ~/.bin/wscreenshot
 bindsym Print+Shift exec ~/.bin/wscreenshot --region
@@ -320,3 +322,7 @@ bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+
+bindsym XF86MonBrightnessUp exec brightnessctl -e set +7% 
+bindsym XF86MonBrightnessDown exec brightnessctl -e set 7%- 
+exec --no-startup-id nm-applet
