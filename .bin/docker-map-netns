@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+
+container="$1"
+mkdir -p /var/run/netns/
+pid=$(docker inspect -f '{{.State.Pid}}' ${container})
+ln -sfT "/proc/$pid/ns/net" "/var/run/netns/${container}"
