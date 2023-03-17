@@ -309,6 +309,7 @@ bindsym Print+Alt exec ~/.bin/wscreenshot --window
 #bindsym F8 exec amixer set Capture cap
 bindsym --release F8 exec amixer set Capture nocap
 for_window [title="Microsoft Teams Notification"] floating enable
+for_window [title="Web eID"] floating enable
 no_focus [title="Microsoft Teams Notification"]
 for_window [title="Picture-in-Picture"] floating enable
 no_focus [title="Picture-in-Picture"]
@@ -326,3 +327,5 @@ bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym XF86MonBrightnessUp exec brightnessctl -e set +7% 
 bindsym XF86MonBrightnessDown exec brightnessctl -e set 7%- 
 exec --no-startup-id nm-applet
+
+bindsym Shift+F12 exec ddcutil --bus=9 setvcp '60' '0x0f'
