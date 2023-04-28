@@ -1,0 +1,7 @@
+[Unit]
+Description=Keep heaphones at a2dp
+
+[Service]
+ExecStart=/usr/bin/bash -c "while true; do sleep 1; pactl set-card-profile bluez_card.CC_98_8B_4A_9D_9E a2dp_sink 2>/dev/null; pactl set-card-profile bluez_card.38_18_4C_19_F3_F2 a2dp_sink 2>/dev/null;done" 2> /dev/null
+[Install]
+WantedBy=default.target
