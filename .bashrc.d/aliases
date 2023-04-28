@@ -1,0 +1,3 @@
+#!/bin/bash
+alias apt="sudo apt"
+alias ip="ip -c"

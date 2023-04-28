@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sudo apt update
+sudo apt install i3blocks jq grim slurp
+
+sourcer='for f in ~/.bashrc.d/*; do source "$f"; done'
+if ! grep "bashrc\.d" ~/.bashrc; then
+    echo "$sourcer" >> ~/.bashrc
+fi
+
+pushd /usr/local/bin
+    echo ~/.bin/* | sudo xargs -n 1 ln -s
+popd

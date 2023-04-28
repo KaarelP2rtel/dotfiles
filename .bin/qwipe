@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo dd if=/dev/zero of=/dev/$1 status=progress count=10 bs=16M oflag=nocache
