@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ubuntu=$(efibootmgr | grep  ubuntu | grep -Eo "[0-9]{1,20}")
+win=$(efibootmgr | grep  Windows | grep -Eo "[0-9]{1,20}")
+
+sudo efibootmgr -o "$ubuntu,$win"
