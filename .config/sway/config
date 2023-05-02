@@ -135,8 +135,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     workspace 8 output "Dell Inc. DELL S2721DGF DDYHQ83"
 
 
-    workspace 9 output "Unknown 0x0791 0x00000000"
-    workspace 10 output "Unknown 0x0791 0x00000000"
+    workspace 9 output eDP-1
+    workspace 10 output eDP-1
     exec_always ~/.bin/displays
 
     # Switch to workspace
