@@ -1,5 +1,10 @@
 #!/bin/bash
 set -euo pipefail
+export WAYLAND_DISPLAY=$(basename /run/user/977402181/wayland-?)
+export SWAYSOCK=$(echo /run/user/*/sway*.sock)
+
+/bin/bash -c 'echo on > /sys/class/drm/card0/card0-DP-4/status' || true
+
 get(){
     swaymsg -pt get_outputs | grep "$1" | awk '{print $2}' || true
 }

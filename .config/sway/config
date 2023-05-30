@@ -19,7 +19,7 @@ set $term x-terminal-emulator
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 
-set $menu dmenu_path | dmenu -m $(swaymsg -t get_outputs | jq '[.[].focused] | index(true)') | xargs swaymsg exec --
+set $menu  dmenu_path | dmenu -m $(swaymsg -t get_outputs | jq '[.[].focused] | index(true)') | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -71,7 +71,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+d exec killall dmenu; exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
