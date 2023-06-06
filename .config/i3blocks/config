@@ -1,0 +1,52 @@
+command=/usr/share/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+[cpu_usage]
+label=CPU
+interval=10
+min_width=CPU: 100.00%
+separator=false
+[temperature]
+label=TEMP
+interval=10
+command=/usr/share/i3blocks/temperature --chip coretemp-isa-0000
+[memory]
+label=MEM
+separator=false
+interval=30
+
+[memory]
+label=SWAP
+instance=swap
+separator=false
+interval=30
+
+[disk]
+label=DISK
+#instance=/mnt/data
+interval=30
+
+[iface]
+#instance=wlan0
+color=#00FF00
+interval=10
+separator=false
+
+[wifi]
+#instance=wlp0s20f3
+interval=10
+separator=false
+
+[bandwidth]
+#instance=eth0
+interval=5
+[battery]
+label=⚡
+interval=5
+
+# Date Time
+#
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
