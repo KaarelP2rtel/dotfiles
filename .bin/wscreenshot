@@ -9,7 +9,7 @@ import os
 from subprocess import run
 from urllib.parse import urljoin
 
-file_name = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES)
+file_name = f"{os.environ['HOME']}/Pictures"
 file_name = os.path.join(file_name, time.strftime('screenshot_%Y-%m-%d-%H%M%S_grim.png'))
 
 if len(sys.argv) < 2:
