@@ -314,7 +314,11 @@ no_focus [title="Microsoft Teams Notification"]
 for_window [title="Picture-in-Picture"] floating enable
 no_focus [title="Picture-in-Picture"]
 for_window [title="Microsoft Teams Notification"] move absolute position 2100 px 1200 px
+for_window [title="Bitwarden — Mozilla Firefox"] floating enable
+
+
 bindsym Pause exec swaymsg "output * dpms on"
+
 
 bindsym XF86AudioMute exec amixer set Master toggle
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
