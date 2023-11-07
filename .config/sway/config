@@ -306,8 +306,6 @@ bindswitch lid:off exec swaymsg output eDP-1 enable
 bindsym Print exec ~/.bin/wscreenshot
 bindsym Print+Shift exec ~/.bin/wscreenshot --region
 bindsym Print+Alt exec ~/.bin/wscreenshot --window
-#bindsym F8 exec amixer set Capture cap
-bindsym --release F8 exec amixer set Capture nocap
 for_window [title="Microsoft Teams Notification"] floating enable
 for_window [title="Web eID"] floating enable
 no_focus [title="Microsoft Teams Notification"]
