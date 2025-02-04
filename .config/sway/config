@@ -89,26 +89,26 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Moving around:
 #
     # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+    bindsym --inhibited $mod+$left focus left
+    bindsym --inhibited $mod+$down focus down
+    bindsym --inhibited $mod+$up focus up
+    bindsym --inhibited $mod+$right focus right
     # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+    bindsym --inhibited $mod+Left focus left
+    bindsym --inhibited $mod+Down focus down
+    bindsym --inhibited $mod+Up focus up
+    bindsym --inhibited $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    bindsym --inhibited $mod+Shift+$left move left
+    bindsym --inhibited $mod+Shift+$down move down
+    bindsym --inhibited $mod+Shift+$up move up
+    bindsym --inhibited $mod+Shift+$right move right
     # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+    bindsym --inhibited $mod+Shift+Left move left
+    bindsym --inhibited $mod+Shift+Down move down
+    bindsym --inhibited $mod+Shift+Up move up
+    bindsym --inhibited $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -137,30 +137,30 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     workspace 9 output eDP-1
     workspace 10 output eDP-1
-    exec_always ~/.bin/displays
+    #exec_always ~/.bin/displays
 
     # Switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
+    bindsym --inhibited $mod+1 workspace 1
+    bindsym --inhibited $mod+2 workspace 2
+    bindsym --inhibited $mod+3 workspace 3
+    bindsym --inhibited $mod+4 workspace 4
+    bindsym --inhibited $mod+5 workspace 5
+    bindsym --inhibited $mod+6 workspace 6
+    bindsym --inhibited $mod+7 workspace 7
+    bindsym --inhibited $mod+8 workspace 8
+    bindsym --inhibited $mod+9 workspace 9
+    bindsym --inhibited $mod+0 workspace 10
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
+    bindsym --inhibited $mod+Shift+1 move container to workspace 1
+    bindsym --inhibited $mod+Shift+2 move container to workspace 2
+    bindsym --inhibited $mod+Shift+3 move container to workspace 3
+    bindsym --inhibited $mod+Shift+4 move container to workspace 4
+    bindsym --inhibited $mod+Shift+5 move container to workspace 5
+    bindsym --inhibited $mod+Shift+6 move container to workspace 6
+    bindsym --inhibited $mod+Shift+7 move container to workspace 7
+    bindsym --inhibited $mod+Shift+8 move container to workspace 8
+    bindsym --inhibited $mod+Shift+9 move container to workspace 9
+    bindsym --inhibited $mod+Shift+0 move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -169,25 +169,25 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym --inhibited $mod+b splith
+    bindsym --inhibited $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym --inhibited $mod+s layout stacking
+    bindsym --inhibited $mod+w layout tabbed
+    bindsym --inhibited $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym --inhibited $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym --inhibited $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym --inhibited $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    bindsym --inhibited $mod+a focus parent
 #
 # Scratchpad:
 #
@@ -195,11 +195,11 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym --inhibited $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym --inhibited $mod+minus scratchpad show
 #
 # Resizing containers:
 #
@@ -331,3 +331,12 @@ bindsym XF86MonBrightnessDown exec brightnessctl -e set 7%-
 exec --no-startup-id nm-applet
 
 bindsym Shift+F12 exec ddcutil --bus=9 setvcp '60' '0x0f'
+exec XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway /usr/libexec/xdg-desktop-portal -r
+exec XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway /usr/libexec/xdg-desktop-portal-wlr -r
+bindsym Mod1+g exec wl-copy "Good catch! I will fix that in the next commit, thanks!"
+
+output '*' max_render_time 5 pos 0 0
+
+output 'Dell Inc. DELL S2721DGF DDYHQ83' mode 2560x1440@143.912Hz max_render_time 3 pos 2560 0
+output 'Dell Inc. DELL U2717D J0XYN8B5ADEL' pos 2560 0
+output eDP-1 pos 5120 0

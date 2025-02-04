@@ -3,7 +3,7 @@ set -euo pipefail
 export WAYLAND_DISPLAY=$(basename /run/user/977402181/wayland-?)
 export SWAYSOCK=$(echo /run/user/*/sway*.sock)
 
-/bin/bash -c 'echo on > /sys/class/drm/card0/card0-DP-4/status' || true
+#/bin/bash -c 'echo on > /sys/class/drm/card1/card1-DP-4/status' || true
 
 get(){
     swaymsg -pt get_outputs | grep "$1" | awk '{print $2}' || true
@@ -19,6 +19,9 @@ right="${right}$(get J0XYN8B5ADEL)"
 left="${left}$(get 33F2P83)"
 right="${right}$(get DDYHQ83)"
 
+swaymsg output "$right" mode 2560x1440@143.912Hz
+swaymsg output "$right" adaptive_sync on
+swaymsg output "$right" max_render_time 3
 swaymsg output "$left" pos 0 0
 swaymsg output "$right" pos 2560 0
 swaymsg output eDP-1 pos 5120 0
